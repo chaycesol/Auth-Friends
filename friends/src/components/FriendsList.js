@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import styled from 'styled-components';
 
 const FriendsList =() => {
      const initialFriend = {
@@ -7,6 +8,7 @@ const FriendsList =() => {
         name: '',
         age: '',
         email: '',
+        image: '',
       };
     
     const [friendsList, setFriendsList] = useState([])
@@ -83,6 +85,7 @@ const FriendsList =() => {
     {friendsList.map((friend) => (
       <div key={friend.id}>
         <h2>Name: {friend.name}</h2>
+        <StyledImg src={friend.img} alt={friend.name}/>
         <p>Age: {friend.age}</p>
         <p>Email: {friend.email}</p>
         <button onClick={() => deleteFriend(friend.id)}>Remove</button>
@@ -93,3 +96,8 @@ const FriendsList =() => {
 };
 
 export default FriendsList;
+
+const StyledImg = styled.img`
+    width: 20%;
+    height: auto;
+`
